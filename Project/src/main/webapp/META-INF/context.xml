@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/OracleDB"
+		auth = "Container"
+		type = "javax.sql.DataSource"
+		username = "sqlid"
+		password = "sqlpw"
+		driverClassName = "oracle.jdbc.driver.OracleDriver"
+		factory = "org.apache.commons.dbcp.BasicDataSourceFactory"
+		url = "jdbc:oracle:thin:@localhost:1521:orcl"
+		maxActive = "500"
+		minIdle = "100"/>
+</Context>
+
+<!-- 
+	connection pool 만드는 방법
+	maxActive 최대 커넥션 갯수
+	minIdle 최소 커넥션 갯수
+-->

@@ -1,0 +1,103 @@
+drop sequence mseq;
+create sequence mseq;
+drop table member;
+create table member(
+	no number primary key,
+	id varchar2(20) not null,
+	password varchar2(20) not null,
+	name varchar2(30) not null,
+	email1 varchar2(20),
+	email2 varchar2(20),
+  	resiNum varchar2(10),
+  	resiNum2 varchar2(10),
+	gender varchar2(10),
+	hp1 varchar2(10),
+	hp2 varchar2(10),
+	hp3 varchar2(10)
+);
+
+
+drop sequence cseq;
+create sequence cseq;
+drop table cate;
+create table cate(
+	cnum number primary key,
+	cname varchar2(30) not null,
+	ccode varchar2(30) not null
+);
+
+insert into cate values(cseq.nextval,'여성의류','woman');
+insert into cate values(cseq.nextval,'남성의류','man');
+insert into cate values(cseq.nextval,'신발','shoes');
+insert into cate values(cseq.nextval,'가방','bag');
+insert into cate values(cseq.nextval,'유아동','child');
+
+
+drop sequence pseq;
+create sequence pseq;
+drop table products;
+create table products(
+	pnum number primary key,
+	pname varchar2(50) not null,
+	pname2 varchar2(50) not null,
+	pcompany varchar2(50),
+	pimage	varchar2(30),
+	pqty number default 0,
+	pspec varchar2(12),
+	pcontents varchar2(300),
+	price number default 0,
+	point number default 0
+);
+
+drop sequence oseq;
+create sequence oseq;  
+drop table order2;
+create table order2(
+	oId number,
+	memno number,
+	pnum number,
+	pqty number,
+	price number
+);
+
+drop sequence bseq;
+create sequence bseq;
+drop table board;
+create table board( 
+	num number not null primary key,
+	writer varchar2(30) not null,
+	title varchar2(50) not null,
+	passwd varchar2(20) not null,
+	reg_date date not null,
+	readcount number default 0,
+	ref number not null,
+	re_step number not null,
+	re_level number not null,
+	content varchar2(100) not null,
+	ip varchar2(20) not null
+);
+
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (6,'유아동','키티 장난감','child','a5.jpg',30,'NORMAL','장난감 놀이',45000,45);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (7,'유아동','공룡 장난감','child','a21.jpg',15,'BEST','공룡과 함께 놀아요~.',20000,20);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (1,'신발','보라신발','shoes','s31.jpg',10,'HIT','깔끔하고 걸을때 편해요.',30000,30);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (2,'신발','검은구두','shoes','s21.jpg',20,'NORMAL','구두.',40000,40);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (3,'신발','베이직 구두','shoes','s11.jpg',5,'POPULAR','구두.',55000,55);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (4,'여성의류','반팔','clothes','c72.jpg',11,'NORMAL','더운 날에 편하게 입는 옷.',15000,15);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (5,'남성의류','반팔','clothes','c71.jpg',30,'NORMAL','더운 날에 편하게 입는 옷.',15000,15);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (8,'여성의류','코트','clothes','c21.jpg',21,'BEST','추운 겨울 따뜻한 옷.',60000,60);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (9,'남성의류','점퍼','clothes','c15.jpg',4,'NORMAL','가볍게 걸치는 점퍼',30000,30);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (10,'남성의류','파랑 반팔','clothes','c14.jpg',33,'BEST','편한 상의',25000,25);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (11,'남성의류','검은 반팔','clothes','c12.jpg',2,'POPULAR','편하게 입기 좋은 상의',20000,20);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (12,'여성의류','블라우스','clothes','c6.jpg',11,'NORMAL','여행갈때 좋은 옷',20000,20);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (13,'여성의류','여성 상의','clothes','c5.jpg',16,'NORMAL','단정한 상의',25000,25);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (14,'여성의류','하얀 블라우스','clothes','c4.jpg',6,'POPULAR','깔끔해보이는 옷',30000,30);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (15,'가방','검은 가방','bag','b6.jpg',10,'NORMAL','편한가방',35000,35);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (16,'가방','스타일 있는 가방','bag','b4.jpg',13,'NORMAL','편한가방',55000,55);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (17,'가방','체인백','bag','b3.jpg',17,'HIT','편한가방',50000,55);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (18,'가방','하얀 백','bag','b2.jpg',6,'BEST','편한가방',100000,100);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (19,'가방','고급진 가방','bag','b1.jpg',10,'NORMAL','편한가방',150000,150);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (20,'유아동','또봇','child','b4.jpg',12,'NORMAL','또봇 자동차',35000,35);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (21,'유아동','로봇','child','a3.jpg',13,'HIT','변신 로봇!',45000,45);
+Insert into products (PNUM,PNAME,PNAME2,PCOMPANY,PIMAGE,PQTY,PSPEC,PCONTENTS,PRICE,POINT) values (22,'유아동','해리포터','child','a1.jpg',6,'NORMAL','해리포터 장난감',55000,55);
+
+commit;
